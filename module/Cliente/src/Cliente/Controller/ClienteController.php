@@ -83,7 +83,7 @@ class ClienteController extends AbstractActionController {
         
         $telefonosTiposOptions = new TelefonosTiposForm($em);
         $form = new ClienteForm($telefonosTiposOptions);
-        $form->bind($cliente);
+        //$form->bind($cliente);
 
         $request = $this->getRequest();
         if ($request->isPost()) {
