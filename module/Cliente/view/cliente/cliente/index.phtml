@@ -1,0 +1,32 @@
+ <?php
+ $title = 'Clientes';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <p>
+     <a href="<?php echo $this->url('cliente', array('action'=>'add'));?>">Crear cliente nuevo</a>
+ </p>
+
+ <table class="table">
+ <tr>
+     <th>Nombre</th>
+     <th>Telefono</th>
+     <th>Tipo</th>
+     <th>Fecha de Alta</th>
+     <th>&nbsp;</th>
+ </tr>
+ <?php foreach ($telefonos as $tel) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($tel->getCliente()->getNombre());?></td>
+     <td><?php echo $this->escapeHtml($tel->getTelefonoNumero());?></td>
+     <td><?php echo $this->escapeHtml($tel->getTelefonoTipo()->getTipo());?></td>
+     <td><?php echo $this->escapeHtml($tel->getCliente()->getFechaAlta()->format("d/m/Y"));?></td>
+     <td>
+         <a href="<?php echo $this->url('cliente',
+             array('action'=>'edit', 'id' => $tel->getId()));?>">Edit</a>
+         <a href="<?php echo $this->url('cliente',
+             array('action'=>'delete', 'id' => $tel->getId()));?>">Delete</a>
+     </td>
+ </tr>
+ <?php endforeach; ?>
+ </table>
